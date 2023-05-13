@@ -1,5 +1,6 @@
 # proyecto-programacion
 Alejandro Urbina-Urbinabina
+Alejandro Betancourt
 1.-Abrir tarea.py
 2.-Ingresar el nombre del pokemon que va a atacar(solo pokemones de las primeras 7 generaciones)
 3.-Saldra una lista de movimientos que el pokemon aprende y debera digitar el numero del movimiento a usar 
