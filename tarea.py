@@ -84,6 +84,8 @@ def dano(move, y, z):
 #Calcular vida restante del pokemon despues de recibir un ataque
 def vida(m):
 	vida_restante=int(stat(z)[0]-m)
+	if vida_restante < 0:
+		vida_restante=0
 	return vida_restante
 
 #Convertir la primera letra en mayuscula
