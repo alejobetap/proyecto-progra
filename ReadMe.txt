@@ -5,3 +5,4 @@
 -Se mostraran las estaditicas del pokemon selccionado al nivel 50
 -Seleccionar pokemon que recibira el ataque
 -Se mostrara el daño realizado y la vida restante del pokemon atacado
+-Presionar 1 en caso de querer sehuir usando el programa
