@@ -9,6 +9,7 @@ estadisticas="pokemon_data.csv"
 lvl=50
 EV=250
 IV=31
+continuar=1
 
 #abre archivo
 def abrir_archivo(archivo):
@@ -98,58 +99,62 @@ def mayus(y):
 	return mayuscula
 
 #Salida
+while continuar == 1:
 #Escoger el pokemon que realizara el ataque
-y=input("Ingrese el nombre del primer Pokemon: ")
-y=y.lower()
-detener=False
+	y=input("Ingrese el nombre del primer Pokemon: ")
+	y=y.lower()
+	detener=False
 #Detener el programa en caso de que el nombre ingresado no sea un pokemon existente
-if y not in stats(y):
-	print("Pokemon invalido")
-else:
-	#Mostrar estadisticas base del pokemon
-	print("Nombre del Pokemon seleccionado: ", mayus(y))
-	print("Estadisticas base del Pokemon: ", "\n", " - HP = ", stats(y)[2], "\n", " - Ataque = ", stats(y)[3], "\n", " - Defensa = ", stats(y)[4], "\n",
-	 " - Ataque especial = ", stats(y)[5], "\n", " - Defensa Especial = ", stats(y)[6], "\n", " - Velocidad = ", stats(y)[7])
-	print("Movimientos que puede aprender el Pokemon:")
-	#Mostrar movimientos
-	i=0
-	while i<len(mostrar_movimnientos(y)):
-		print(i, " - ", mostrar_movimnientos(y)[i])
-		i+=1
-	#Seleccion de movimiento y mostrar estadisticas despues de modificadores
-	move=int(input("Seleccione movimiento a ejecutar: "))
-	#Detener el programa  en caso de que se eliga un movimiento que no esta disponible
-	if move >= len(mostrar_movimnientos(y)):
-		detener=True
-	if detener is True:
-		print("Movimietno invalido")
+	if y not in stats(y):
+		print("Pokemon invalido")
 	else:
-		#Verificar que el ataque elegido haga daño
-		while get_move(mostrar_movimnientos(y)[move])[1]==0:
-			move=int(input("No se puede calcular el daño ingrese otro movimiento: "))
-			if move >= len(mostrar_movimnientos(y)):
-				detener=True
+		#Mostrar estadisticas base del pokemon
+		print("Nombre del Pokemon seleccionado: ", mayus(y))
+		print("Estadisticas base del Pokemon: ", "\n", " - HP = ", stats(y)[2], "\n", " - Ataque = ", stats(y)[3], "\n", " - Defensa = ", stats(y)[4], "\n",
+		 " - Ataque especial = ", stats(y)[5], "\n", " - Defensa Especial = ", stats(y)[6], "\n", " - Velocidad = ", stats(y)[7])
+		print("Movimientos que puede aprender el Pokemon:")
+		#Mostrar movimientos
+		i=0
+		while i<len(mostrar_movimnientos(y)):
+			print(i, " - ", mostrar_movimnientos(y)[i])
+			i+=1
+		#Seleccion de movimiento y mostrar estadisticas despues de modificadores
+		move=int(input("Seleccione movimiento a ejecutar: "))
+		#Detener el programa  en caso de que se eliga un movimiento que no esta disponible
+		if move >= len(mostrar_movimnientos(y)):
+			detener=True
 		if detener is True:
 			print("Movimietno invalido")
 		else:
-			#Mostrar el movimiento y las estadisticas despues de los modificadores
-			print("El ataque seleccionado es: ", mostrar_movimnientos(y)[move])
-			print("El poder del ataque es: ", get_move(mostrar_movimnientos(y)[move])[1])
-			print("El hp al nivel ", lvl, "de", mayus(y), "es", stat(y)[0])
-			print("El atk al nivel ", lvl, "de", mayus(y), "es", stat(y)[1])
-			print("El def al nivel ", lvl, "de", mayus(y), "es", stat(y)[2])
-			print("El spa al nivel ", lvl, "de", mayus(y), "es", stat(y)[3])
-			print("El spd al nivel ", lvl, "de", mayus(y), "es", stat(y)[4])
-			print("El spe al nivel ", lvl, "de", mayus(y), "es", stat(y)[5])
-			#Escoger el pokemon que recibira el ataque y mostrar su vida despues de modificadores
-			z=input("Ingrese el nombre a atacar pokemon: ")
-			z=z.lower()
-			if z not in stats(z):
-				print("Pokemon invalido")
+			#Verificar que el ataque elegido haga daño
+			while get_move(mostrar_movimnientos(y)[move])[1]==0:
+				move=int(input("No se puede calcular el daño ingrese otro movimiento: "))
+				if move >= len(mostrar_movimnientos(y)):
+					detener=True
+			if detener is True:
+				print("Movimietno invalido")
 			else:
-				print("Nombre del pokemon seleccionado: ", mayus(z))
-				print("El hp al nivel ", lvl, "de", mayus(z), "es", stat(z)[0])
-				#Calcula el daño y la vida restante del pokemon que recibe el ataque
-				m=dano(move, y, z)
-				print("El daño que realizo ", mayus(y), "a", mayus(z), "fue de: ", m)
-				print(mayus(z), "quedo con un HP de: ", vida(m))
+				#Mostrar el movimiento y las estadisticas despues de los modificadores
+				print("El ataque seleccionado es: ", mostrar_movimnientos(y)[move])
+				print("El poder del ataque es: ", get_move(mostrar_movimnientos(y)[move])[1])
+				print("El hp al nivel ", lvl, "de", mayus(y), "es", stat(y)[0])
+				print("El atk al nivel ", lvl, "de", mayus(y), "es", stat(y)[1])
+				print("El def al nivel ", lvl, "de", mayus(y), "es", stat(y)[2])
+				print("El spa al nivel ", lvl, "de", mayus(y), "es", stat(y)[3])
+				print("El spd al nivel ", lvl, "de", mayus(y), "es", stat(y)[4])
+				print("El spe al nivel ", lvl, "de", mayus(y), "es", stat(y)[5])
+				#Escoger el pokemon que recibira el ataque y mostrar su vida despues de modificadores
+				z=input("Ingrese el nombre a atacar pokemon: ")
+				z=z.lower()
+				if z not in stats(z):
+					print("Pokemon invalido")
+				else:
+					print("Nombre del pokemon seleccionado: ", mayus(z))
+					print("El hp al nivel ", lvl, "de", mayus(z), "es", stat(z)[0])
+					#Calcula el daño y la vida restante del pokemon que recibe el ataque
+					m=dano(move, y, z)
+					print("El daño que realizo ", mayus(y), "a", mayus(z), "fue de: ", m)
+					print(mayus(z), "quedo con un HP de: ", vida(m))
+	continuar=int(input("Desea continuar?:\n 1.-Si\n 2.-No\n"))
+if continuar !=1:
+	print("Gracias por usar el programa!")
