@@ -37,17 +37,17 @@ def stats(y):
 #Calcular cuales seran los stats despues de los modificadores
 def stat(y):
 	HP=(stats(y)[2])
-	HP=float((((int(HP)+IV)*2+(sqrt(EV)/4))*lvl)/100)+lvl+10	
+	HP=int((((int(HP)+IV)*2+(sqrt(EV)/4))*lvl)/100)+lvl+10	
 	ATK=(stats(y)[3])
-	ATK=float((((int(ATK)+IV)*2+(sqrt(EV)/4))*lvl)/100)+5
+	ATK=int((((int(ATK)+IV)*2+(sqrt(EV)/4))*lvl)/100)+5
 	DEF=(stats(y)[4])
-	DEF=float((((int(DEF)+IV)*2+(sqrt(EV)/4))*lvl)/100)+5
+	DEF=int((((int(DEF)+IV)*2+(sqrt(EV)/4))*lvl)/100)+5
 	SPA=(stats(y)[5])
-	SPA=float((((int(SPA)+IV)*2+(sqrt(EV)/4))*lvl)/100)+5
+	SPA=int((((int(SPA)+IV)*2+(sqrt(EV)/4))*lvl)/100)+5
 	SPD=(stats(y)[6])
-	SPD=float((((int(SPD)+IV)*2+(sqrt(EV)/4))*lvl)/100)+5
+	SPD=int((((int(SPD)+IV)*2+(sqrt(EV)/4))*lvl)/100)+5
 	SPE=(stats(y)[7])
-	SPE=float((((int(SPE)+IV)*2+(sqrt(EV)/4))*lvl)/100)+5
+	SPE=int((((int(SPE)+IV)*2+(sqrt(EV)/4))*lvl)/100)+5
 	return HP, ATK, DEF, SPA, SPD, SPE
 #Muestra los ataques del pokemon elegido
 def mostrar_movimnientos(y):
@@ -77,13 +77,13 @@ def modifier(move, y, z):
 def dano(move, y, z):
 	#Verificar tipo de daño
 	if get_move(mostrar_movimnientos(y)[move])[3] in "special":
-		damage=((((((2*lvl)/5)+2)*get_move(mostrar_movimnientos(y)[move])[1]*(stat(y)[3]/stat(z)[4]))/50)+2)*modifier(move, y, z)
+		damage=int((((((2*lvl)/5)+2)*get_move(mostrar_movimnientos(y)[move])[1]*(stat(y)[3]/stat(z)[4]))/50)+2)*modifier(move, y, z)
 	else:
-		damage=((((((2*lvl)/5)+2)*get_move(mostrar_movimnientos(y)[move])[1]*(stat(y)[1]/stat(z)[2]))/50)+2)*modifier(move, y, z)
+		damage=int((((((2*lvl)/5)+2)*get_move(mostrar_movimnientos(y)[move])[1]*(stat(y)[1]/stat(z)[2]))/50)+2)*modifier(move, y, z)
 	return damage
-#Calcular vida retante del pokemon depues de recibir un ataque
+#Calcular vida restante del pokemon despues de recibir un ataque
 def vida(m):
-	vida_restante=stat(z)[0]-m
+	vida_restante=int(stat(z)[0]-m)
 	return vida_restante
 
 #Convertir la primera letra en mayuscula
